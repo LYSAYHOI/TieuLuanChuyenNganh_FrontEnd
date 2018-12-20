@@ -1,0 +1,11 @@
+.image-style {
+	display: block;
+	height: auto;
+	width: auto;
+	max-height: 380px;
+	transition: transform .2s;
+	z-index: 1;
+}
+.image-style:hover {
+	transform: scale(1.3);
+}

@@ -1,0 +1,11 @@
+<div class="p-3 d-flex flex-lg-row flex-wrap">
+	<div class="card flex-fill" style="width: 15rem;" *ngFor = 'let i of productList'>
+		<img [routerLink]="['/product-detail/1/1']" class="card-img-top product-image" [src]="'assets/'+ i.image" [alt]="i.productName">
+		<div class="card-body">
+			<a class="card-title">{{i.productName}}</a>
+			<p class="card-text">{{i.price}}</p>
+			<a (click)="addToCart(i.idProduct)" class="btn btn-primary">add to cart</a>
+		</div>
+	</div>
+	
+</div>

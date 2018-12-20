@@ -1,0 +1,62 @@
+<div class="cart_section">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-10 offset-lg-1">
+				<div class="cart_width">
+					<div class="cart_title">Shopping Cart</div>
+					<div class="cart_items">
+						<ul class="cart_list">
+							<li class="cart_item clearfix" *ngFor= "let i of cart; let index = index">
+								<div class="cart_item_image"><img [src]="'assets/'+ i.productDTO.image" alt=""></div>
+								<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+									<div class="cart_item_name cart_info_col">
+										<div class="cart_item_title">Name</div>
+										<div class="cart_item_text">{{i.productDTO.productName}}</div>
+									</div>
+									<div class="cart_item_quantity cart_info_col">
+										<div class="cart_item_title">Quantity</div>
+										<div class="cart_item_text">
+											<div class="input-group">
+												<button class="btn btn-info" type="button" (click)="minus(index)"><i class="fa fa-minus-square"></i></button>
+												<input type="number" min="1" max="30" class="form-control inp-width" [(ngModel)] = "i.quantity" (input)= "quantityChange($event.target.value, index)">
+												<button class="btn btn-info" type="button" (click)="plus(index)"><i class="fa fa-plus-square"></i></button>
+											</div>
+										</div>
+									</div>
+									<div class="cart_item_price cart_info_col">
+										<div class="cart_item_title">Price</div>
+										<div class="cart_item_text">{{i.productDTO.price | currency: 'VND'}}</div>
+									</div>
+									<div class="cart_item_total cart_info_col">
+										<div class="cart_item_title">Total</div>
+										<div class="cart_item_text">{{i.productDTO.price * i.quantity | currency: 'VND'}}</div>
+									</div>
+									<div>
+										<button class="mt-5 btn btn-danger" (click)= "delete(index)"><i class="fa fa-trash"></i></button>
+									</div>
+								</div>
+							</li>
+						</ul>
+					</div>
+					
+					<!-- Order Total -->
+					<div class="order_total">
+						<div class="order_total_content text-md-right">
+							<div class="order_total_title">Order Total:</div>
+							<div class="order_total_amount">{{totalPrice | currency: 'VND'}}</div>
+						</div>
+					</div>
+
+					<div class="input-group mb-3 p-3 pt-3">
+						<input type="text" class="form-control" placeholder="enter your address to send the order" [(ngModel)]="address">
+						<div class="input-group-append">
+							<button class="btn btn-outline-secondary" type="button" id="button-addon2" (click)= "createOrder()">Create Order</button>
+						</div>
+					</div>
+					
+					
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

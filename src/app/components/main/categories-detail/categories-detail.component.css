@@ -1,0 +1,34 @@
+.item:hover {
+	color: red;
+	cursor: pointer;
+}
+.item-border {
+	border-bottom: 1px solid #D7DEEA;
+	border-right: 1px solid #D7DEEA;
+}
+.item-size-l {
+	width: 260px;
+	height: 350px;
+}
+.image-size-l {
+	width: 250px;
+	height: 250px;
+}
+.image-size {
+	width: 50%;
+	height: 126px;
+}
+.item-size {
+	width: 250px;
+	height: 350px;
+}
+.divide {
+	border: 2px solid #D7DEEA;
+	border-radius: 15px;
+	overflow: hidden;
+}
+.category-detail-title {
+	float: left;
+	margin-top: 14px;
+	margin-right: 15px;
+}

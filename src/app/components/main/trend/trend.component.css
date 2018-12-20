@@ -1,0 +1,22 @@
+.small-font-size {
+	font-size: 12px;
+}
+.dot-circle {
+	font-size: 5px;
+	color: #6c757d;
+	padding-right: 10px;
+}
+.medium-font-size {
+	font-size: 16px;
+}
+.link:hover {
+	color: red;
+	cursor: pointer;
+}
+.trend-product-image {
+   width: 30%;
+}
+.price-background-color {
+	background-color: #22447A;
+	border-radius: 15px;
+}

@@ -1,0 +1,70 @@
+<div class= "container mt-5">
+	<div class="row">
+		<img class="col-4 image-style" [src]="'assets/'+productDetail?.image" alt="Dell XPS">
+		<div class = "col-8">
+			<h1>{{productDetail?.productName}}</h1>
+			<h3>{{productDetail?.price | currency: 'VND'}}/unit</h3>
+			<div class="row pt-4">
+				<p class="col-2">color:</p>
+				<button class="bg-primary btn mr-2 rounded-circle"></button>
+				<button class="bg-dark btn mr-2 rounded-circle"></button>
+				<button class="bg-danger btn rounded-circle"></button>
+			</div>
+			<button class = "m-4 p-3 btn btn-primary">Add to cart</button>
+		</div>
+	</div>
+	<div class="mt-5">
+		<ul class="nav nav-tabs">
+			<li class="nav-item">
+				<a class="nav-link active" data-toggle="tab" href="#detail">Product Detail</a>
+			</li>
+			<li class="nav-item">
+				<a class="nav-link" data-toggle="tab" href="#comment">Comment</a>
+			</li>
+		</ul>
+	</div>
+</div>
+
+<div class="tab-content">
+	<div class="tab-pane container active" id="detail">
+		<div class = "col-8">
+			<h1>Dell XPS is manufactured by Dell corp</h1>
+			<h3>{{2000000 | currency: 'VND'}}/unit</h3>
+			<div class="row pt-4">
+				<p class="col-2">color:</p>
+				<button class="bg-primary btn mr-2 rounded-circle"></button>
+				<button class="bg-dark btn mr-2 rounded-circle"></button>
+				<button class="bg-danger btn rounded-circle"></button>
+			</div>
+			<button class = "m-4 p-3 btn btn-primary">Add to cart</button>
+		</div>
+	</div>
+	<div class="tab-pane container fade" id="comment">
+		<table class="table">
+	    <thead>
+	      <tr>
+	        <th>Firstname</th>
+	        <th>Lastname</th>
+	        <th>Email</th>
+	      </tr>
+	    </thead>
+	    <tbody>
+	      <tr>
+	        <td>John</td>
+	        <td>Doe</td>
+	        <td>john@example.com</td>
+	      </tr>
+	      <tr>
+	        <td>Mary</td>
+	        <td>Moe</td>
+	        <td>mary@example.com</td>
+	      </tr>
+	      <tr>
+	        <td>July</td>
+	        <td>Dooley</td>
+	        <td>july@example.com</td>
+	      </tr>
+	    </tbody>
+	  </table>
+	</div>
+</div>

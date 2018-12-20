@@ -1,0 +1,66 @@
+<div class="page-wrapper bg-gra-02 p-t-130 p-b-100 font-poppins">
+    <div class="wrapper wrapper--w680">
+        <div class="card card-4">
+            <div class="card-body">
+                <h2 class="title">Registration Form</h2>
+                {{role}}
+                <form method="POST" >
+                    <div class="row row-space">
+                        <div class="col-5">
+                            <div class="input-group">
+                                <label class="label">User Name</label>
+                                <input class="input--style-4" type="text" [(ngModel)] ="user_name" [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="input-group">
+                                <label class="label">Phone Number</label>
+                                <input class="input--style-4" type="number" [(ngModel)] = "phone_number" [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-space">
+                        <div class="col-5">
+                            <div class="input-group">
+                                <label class="label">Identity Number</label>
+                                <input class="input--style-4" type="number" [(ngModel)] = "identity_number" [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="input-group">
+                                <label class="label">Email</label>
+                                <input class="input--style-4" type="email" [(ngModel)] ="email" [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row row-space">
+                        <div class="col-5">
+                            <div class="input-group">
+                                <label class="label">Login Name</label>
+                                <input class="input--style-4" type="text" [(ngModel)] ="login_name" [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                        <div class="col-5">
+                            <div class="input-group">
+                                <label class="label">Password</label>
+                                <input class="input--style-4" type="password" [(ngModel)] ="pass" [ngModelOptions]="{standalone: true}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="input-group mb-3">
+                        <div class="input-group-prepend">
+                            <label class="input-group-text pl-2 pr-2" for="inputGroupSelect01">Role</label>
+                        </div>
+                        <select class="custom-select pl-3" id="inputGroupSelect01" [(ngModel)] = "role" [ngModelOptions]="{standalone: true}">
+                            <option value="0" selected>Seller</option>
+                            <option value="1">Buyer</option>
+                        </select>
+                    </div>
+                    <div class="p-t-15">
+                        <button class="btn btn--radius-2 btn--blue" type="submit" (click)= "register()">Submit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
