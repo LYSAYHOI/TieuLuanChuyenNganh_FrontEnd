@@ -6,11 +6,11 @@ import { CookieService } from 'ngx-cookie-service';
 import { ToastrService } from 'ngx-toastr';
 
 @Component({
-	selector: 'app-product',
-	templateUrl: './product.component.html',
-	styleUrls: ['./product.component.css']
+	selector: 'app-product-search',
+	templateUrl: './product-search.component.html',
+	styleUrls: ['./product-search.component.css']
 })
-export class ProductComponent implements OnInit, OnDestroy {
+export class ProductSearchComponent implements OnInit {
 
 	private selectedIndex: number = 1;
 	private firstRun: boolean = true;
@@ -18,7 +18,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 	private productListCount: number[] = [];
 	private paramSubscription : Subscription;
 	private getProductSubcription : Subscription;
-	private catalogID: number;
+	private keyword: string;
 
 	constructor(
 		private activatedRoute: ActivatedRoute,
@@ -42,20 +42,19 @@ export class ProductComponent implements OnInit, OnDestroy {
 	getParams(index) {
 		this.paramSubscription = this.activatedRoute.params.subscribe(
 			data => {
-				this.catalogID = data.id;
-				this.getProductByCatalog(this.catalogID, index);				
+				this.keyword = data.keyword;
+				this.getProductBySearch(this.keyword, index);
 				this.selectedIndex = index;
 			}
 		);
 	}
 
-	getProductByCatalog(id, index){
-		this.getProductSubcription = this.productService.getProductByCategoryProductPage(id, index).subscribe(
+	getProductBySearch(keyword, index){
+		this.getProductSubcription = this.productService.GetProductBySearch(keyword, index).subscribe(
 			data => {
 				this.productList = data['object'];
+				this.pagination();
 				
-					this.pagination();
-					
 			}, error => {
 				console.log(error);
 			}
@@ -112,7 +111,7 @@ export class ProductComponent implements OnInit, OnDestroy {
 
 	pagination() {
 
-		this.productService.getProductByCategoryCount(this.catalogID.toString()).subscribe(
+		this.productService.getProductBySearchCount(this.keyword).subscribe(
 			response =>{
 				this.productListCount = [];
 				let num = response['object'];
@@ -125,14 +124,14 @@ export class ProductComponent implements OnInit, OnDestroy {
 	}
 
 	showSuccess() {
-    	this.toastrService.success('', 'register successfully', {
+    	this.toastrService.success('', 'add to cart successfully', {
     		timeOut: 1000,
 		    positionClass: 'toast-top-right'
     	});
   	}
 
   	showFail() {
-    	this.toastrService.error('', 'register fail', {
+    	this.toastrService.error('', 'add to cart  fail', {
     		timeOut: 700,
 		    positionClass: 'toast-top-right'
     	});

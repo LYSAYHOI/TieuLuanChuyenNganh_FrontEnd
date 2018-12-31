@@ -3,7 +3,6 @@ import { AccountService } from './../../services/account.service';
 import { CookieService } from 'ngx-cookie-service';
 import { Subscription } from 'rxjs';
 import { ToastrService } from 'ngx-toastr';
-import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-login',
@@ -20,8 +19,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 	constructor(
 		private accountService: AccountService,
 		private cookieService: CookieService,
-		private toastrService: ToastrService,
-		private router: Router
+		private toastrService: ToastrService
 	){}
 
 	ngOnInit() {
@@ -49,14 +47,22 @@ export class LoginComponent implements OnInit, OnDestroy {
 				token: response['object'][1],
 				userId: response['object'][0]['userId'],
 				userName: response['object'][0]['userName'],
-				phoneNumber: response['object'][0]['phoneNumber']
+				phoneNumber: response['object'][0]['phoneNumber'],
+				role: response['object'][0]['role']
 			}
 			this.cookieService.set('token', JSON.stringify(data));
 			this.disableLogin = true;
 			this.showSuccess();
-			setTimeout(() => {
-				window.location.href = "/"
-			}, 1300)
+			if(response['object'][0]['role'] === 'CONSUMER'){
+				setTimeout(() => {
+					window.location.href = "/"
+				}, 1300)
+			}
+			if(response['object'][0]['role'] === 'PRODUCER'){
+				setTimeout(() => {
+					window.location.href = "/process-order"
+				}, 1300)
+			}
 			console.log(JSON.stringify(data));
 		}, (error)=>{
 			this.showFail();

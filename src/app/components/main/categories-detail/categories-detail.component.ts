@@ -22,7 +22,6 @@ export class CategoriesDetailComponent implements OnInit {
 		this.getProductService.getProductByCategory('1').subscribe(
 			data => { 
 				this.products1 = data['object'];
-				console.log(this.products1);
 			},
 			error => { console.log(error);}
 		);

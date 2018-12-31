@@ -1,0 +1,50 @@
+<div class="cart_items" >
+	<div class="d-flex flex-row">
+		<button class="btn btn-danger ml-5" style="width: 100px;" (click)= "none()">None</button>
+		<button class="btn btn-danger ml-2" style="width: 100px;" (click)= "fail()">Fail</button>
+		<button class="btn btn-danger ml-2" style="width: 100px;" (click)= "inprocess()">Inprocess</button>
+		<h3 style="margin-left: 20%">{{title}}</h3>
+	</div>
+	<ul class="cart_list">
+		<li class="cart_item clearfix" *ngFor= "let i of orderDetailList; let index = index">
+			<div class="cart_item_image"><img [src]="'assets/'+ i.product.image" alt=""></div>
+			<div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+				<div class="cart_item_name cart_info_col">
+					<div class="cart_item_title">Order Id</div>
+					<div class="cart_item_text">{{i.order.idOrder}}</div>
+				</div>
+				<div class="cart_item_name cart_info_col">
+					<div class="cart_item_title">Name</div>
+					<div class="cart_item_text">{{i.product.productName}}</div>
+				</div>
+				<div class="cart_item_quantity cart_info_col">
+					<div class="cart_item_title">Quantity</div>
+					<div class="cart_item_text">{{i.quantity}}</div>
+				</div>
+				<div class="cart_item_total cart_info_col">
+					<div class="cart_item_title">Total</div>
+					<div class="cart_item_text">{{i.product.price * i.quantity | currency: 'VND'}}</div>
+				</div>
+				<div class="cart_item_total cart_info_col">
+					<div class="cart_item_title">Status</div>
+					<div class="cart_item_text">{{i.statusDTO}}</div>
+				</div>
+				<div>
+					<div class="cart_item_title">Cancel</div>
+					<i class="fa fa-times-circle fa-2x mt-4 " (click)="cancelOrderDetail(index)" 
+						[ngStyle]="{'color': (i.statusDTO != 'NONE' ? 'black' : 'red')}"></i>
+				</div>
+				<div>
+					<div class="cart_item_title">Accept</div>
+					<i class="fa fa-check-circle fa-2x mt-4 " (click)="acceptOrderDetail(index)" 
+						[ngStyle]="{'color': (i.statusDTO != 'NONE' ? 'black' : '#00ff16')}"></i>
+				</div>
+			</div>
+		</li>
+	</ul>
+</div>
+
+<div *ngIf="orderDetailList.length == 0">
+	<h1 style="margin-left: 45%; margin-top: 100px; margin-bottom: 10px">No order</h1>
+	<i class="fa fa-exclamation-circle fa-5x" style="font-size: 300px; margin-left: 41%"></i>
+</div>

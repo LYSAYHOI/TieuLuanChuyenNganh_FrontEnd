@@ -1,6 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { AccountService } from './../../services/account.service';
 import { Subscription } from 'rxjs';
+import { ToastrService } from 'ngx-toastr';
+import { Router } from '@angular/router';
 
 @Component({
 	selector: 'app-register',
@@ -20,7 +22,9 @@ export class RegisterComponent implements OnInit, OnDestroy {
 	private subscription: Subscription;
 
 	constructor(
-		private accountService: AccountService
+		private accountService: AccountService,
+		private toastrService: ToastrService,
+		private router: Router
 	) { }
 
 	ngOnInit() {
@@ -44,9 +48,24 @@ export class RegisterComponent implements OnInit, OnDestroy {
 			
 		};
 		this.subscription = this.accountService.register(data).subscribe((response)=>{
-			console.log(response);
+			this.showSuccess();
+			this.router.navigate(['/login']);
 		}, (error)=>{
 			console.log(error);
 		})
 	}
+
+	showSuccess() {
+    	this.toastrService.success('', 'register successfully', {
+    		timeOut: 1000,
+		    positionClass: 'toast-top-right'
+    	});
+  	}
+
+  	showFail() {
+    	this.toastrService.error('', 'register fail', {
+    		timeOut: 700,
+		    positionClass: 'toast-top-right'
+    	});
+  	}
 }

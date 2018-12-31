@@ -5,54 +5,27 @@
 <div class="card mt-2 mr-4 ml-4">
 	<div class="d-flex flex-row">
 		<div class = 'item-size-l item' style="background-color: #D7DEEA" 
-			*ngFor = 'let i of products1 | slice:0:1'>
+			*ngFor = 'let i of products1 | slice:0:1'
+			[routerLink]="['/product-detail/' + i.productName + '/' + i.idProduct ]">
 			<p class="m-4" >{{products1[0].productName}}</p>
 			<img class= "float-right image-size-l" [src]="'assets/'+ products1[0].image" 
 			alt="{{products1[0].productName}}">
 		</div>
 		<div *ngFor = 'let product of products1;let index = index; let odd = odd;'>
 			<div class="d-flex flex-column item-size-l" *ngIf = 'odd' >
-				<div class="item-border item">
+				<div class="item-border item" 
+				[routerLink]="['/product-detail/' + product.productName + '/' + product.idProduct ]">
 					<p class="pt-2 pl-4">{{products1[index].productName}}</p>
 					<img class= "float-right p-2 image-size" [src]="'assets/'+ products1[index].image" 
 					alt="{{products1[index].productName}}">
 				</div>
-				<div class="item-border item">
+				<div class="item-border item" 
+				[routerLink]="['/product-detail/' + product.productName + '/' + product.idProduct ]">
 					<p class="pt-2 pl-4">{{products1[index+1].productName}}</p>
 					<img class= "float-right p-2 image-size" [src]="'assets/'+ products1[index+1].image" 
 					alt="{{products1[index+1].productName}}">
 				</div>
 			</div>
 		</div>
-		<!--div class="d-flex flex-column">
-			<div class="item-border">
-				<p class="pt-2 pl-4">hello1</p>
-				<img class= "float-right p-2 w-50" src="https://www.gamespace.com/wp-content/uploads/2017/10/laptop1.png" alt="laptop gaming">
-			</div>
-			<div class="item-border">
-				<p class="pt-2 pl-4">hello1</p>
-				<img class= "float-right p-2 w-50" src="https://www.gamespace.com/wp-content/uploads/2017/10/laptop1.png" alt="laptop gaming">
-			</div>
-		</div>
-		<div class="d-lg-flex flex-column d-none d-lg-block">
-			<div class="item-border">
-				<p class="pt-2 pl-4">hello1</p>
-				<img class= "float-right p-2 w-50" src="https://www.gamespace.com/wp-content/uploads/2017/10/laptop1.png" alt="laptop gaming">
-			</div>
-			<div class="item-border">
-				<p class="pt-2 pl-4">hello1</p>
-				<img class= "float-right p-2 w-50" src="https://www.gamespace.com/wp-content/uploads/2017/10/laptop1.png" alt="laptop gaming">
-			</div>
-		</div>
-		<div class="d-xl-flex flex-column d-none d-xl-block">
-			<div class="item-border">
-				<p class="pt-2 pl-4">hello1</p>
-				<img class= "float-right p-2 w-50" src="https://www.gamespace.com/wp-content/uploads/2017/10/laptop1.png" alt="laptop gaming">
-			</div>
-			<div class="item-border">
-				<p class="pt-2 pl-4">hello1</p>
-				<img class= "float-right p-2 w-50" src="https://www.gamespace.com/wp-content/uploads/2017/10/laptop1.png" alt="laptop gaming">
-			</div>
-		</div-->
 	</div>
 </div>

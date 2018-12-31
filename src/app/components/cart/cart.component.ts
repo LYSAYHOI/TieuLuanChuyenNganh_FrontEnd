@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { CookieService } from 'ngx-cookie-service';
 import { OrderService } from './../../services/order.service';
 import { Subscription } from 'rxjs';
+import { Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
 	selector: 'app-cart',
@@ -16,18 +18,24 @@ export class CartComponent implements OnInit {
 	private orderSubscription: Subscription;
 	constructor(
 		private cookieService: CookieService,
-		private orderService: OrderService
+		private orderService: OrderService,
+		private router: Router,
+		private toastrService: ToastrService
 	) { }
 
 	ngOnInit() {
 		this.getCart();
-		console.log(this.cart);
 	}
 
 	getCart () {
+		if(!this.cookieService.check('token')){
+			this.router.navigate(['/login'])
+			return;
+		}
+		if(!this.cookieService.check('cart'))
+			return;
 		let cookie = this.cookieService.get('cart');
 		this.cart = JSON.parse(cookie);
-		console.log(this.cart);
 		this.calTotalPrice();
 
 	}
@@ -57,7 +65,8 @@ export class CartComponent implements OnInit {
 			cart: this.cart
 		}
 		this.orderSubscription = this.orderService.createOrder(data, token['token']).subscribe((response)=>{
-			console.log(response);
+			this.showSuccess();
+			this.router.navigate(['/order'])
 		}, (error) => {
 			console.log(error);
 		})
@@ -85,4 +94,17 @@ export class CartComponent implements OnInit {
 		this.cookieService.set('cart', JSON.stringify(this.cart));
 		this.calTotalPrice();
 	}
+
+	showSuccess() {
+    	this.toastrService.success('', 'successfully', {
+    		timeOut: 1000,
+		    positionClass: 'toast-top-right'
+    	});
+  	}
+  	showFail() {
+    	this.toastrService.error('', 'fail', {
+    		timeOut: 700,
+		    positionClass: 'toast-top-right'
+    	});
+  	}
 }

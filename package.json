@@ -24,6 +24,7 @@
     "font-awesome": "^4.7.0",
     "ng-sidebar": "^8.0.0",
     "ngx-cookie-service": "^2.1.0",
+    "ngx-smart-modal": "^7.1.0",
     "ngx-toastr": "^9.1.1",
     "rxjs": "~6.2.0",
     "zone.js": "~0.8.26"

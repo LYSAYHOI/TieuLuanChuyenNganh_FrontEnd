@@ -7,6 +7,8 @@ import { FormsModule } from '@angular/forms';
 import { SidebarModule } from 'ng-sidebar';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule, NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxSmartModalModule} from 'ngx-smart-modal';
+import { ProcessOrderComponent } from './components/process-order/process-order.component';
 
 //components
 import { AppComponent } from './app.component';
@@ -19,6 +21,8 @@ import { ProductDetailComponent } from './components/product-detail/product-deta
 import { CartComponent } from './components/cart/cart.component';
 import { RegisterComponent } from './components/register/register.component';
 import { LoginComponent } from './components/login/login.component';
+import { OrderStatusComponent } from './components/order-status/order-status.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 //services
 import { GetProductService } from './services/get-product.service';
@@ -26,6 +30,7 @@ import { GetCategoryService } from './services/get-category.service';
 import { CookieService } from 'ngx-cookie-service';
 import { AccountService } from './services/account.service';
 import { OrderService } from './services/order.service';
+import { ProductSearchComponent } from './components/product-search/product-search.component';
 
 const routes : Routes = [
 	{
@@ -51,6 +56,18 @@ const routes : Routes = [
 	{
 		path: 'login',
 		component: LoginComponent
+	},
+	{
+		path: 'order',
+		component: OrderStatusComponent
+	},
+	{
+		path: 'process-order',
+		component: ProcessOrderComponent
+	},
+	{
+		path: 'search/:keyword',
+		component: ProductSearchComponent
 	}
 ]
 
@@ -66,6 +83,10 @@ const routes : Routes = [
 		CartComponent,
 		RegisterComponent,
 		LoginComponent,
+		FooterComponent,
+		OrderStatusComponent,
+		ProcessOrderComponent,
+		ProductSearchComponent,
 	],
 	imports: [
 		BrowserModule,
@@ -75,7 +96,8 @@ const routes : Routes = [
 		RouterModule.forRoot(routes),
 		BrowserAnimationsModule,
 		NoopAnimationsModule,
-		ToastrModule.forRoot()
+		ToastrModule.forRoot(),
+		NgxSmartModalModule.forRoot()
 	],
 	providers: [
 		GetProductService,

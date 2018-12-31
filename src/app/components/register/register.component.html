@@ -3,7 +3,6 @@
         <div class="card card-4">
             <div class="card-body">
                 <h2 class="title">Registration Form</h2>
-                {{role}}
                 <form method="POST" >
                     <div class="row row-space">
                         <div class="col-5">
@@ -52,8 +51,8 @@
                             <label class="input-group-text pl-2 pr-2" for="inputGroupSelect01">Role</label>
                         </div>
                         <select class="custom-select pl-3" id="inputGroupSelect01" [(ngModel)] = "role" [ngModelOptions]="{standalone: true}">
-                            <option value="0" selected>Seller</option>
-                            <option value="1">Buyer</option>
+                            <option value="0" selected>Buyer</option>
+                            <option value="1">Seller</option>
                         </select>
                     </div>
                     <div class="p-t-15">

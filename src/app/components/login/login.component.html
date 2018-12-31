@@ -5,14 +5,12 @@
 				<div class="card-body">
 					<h5 class="card-title text-center">Sign In</h5>
 					<form class="form-signin">
-						<div class="form-label-group">
+						<div class="input-group mb-3">
 							<input type="text" class="form-control" placeholder="user name" [(ngModel)] = "user_name" [ngModelOptions]="{standalone: true}" required autofocus>
-							<label for="inputEmail">User Name</label>
 						</div>
 
-						<div class="form-label-group">
+						<div class="input-group mb-3">
 							<input type="password" class="form-control" placeholder="Password" [(ngModel)] = "pass" [ngModelOptions]="{standalone: true}" required>
-							<label for="inputPassword">Password</label>
 						</div>
 						<button class="btn btn-lg btn-primary btn-block text-uppercase" type="submit" (click) = "login()" [disabled]= "disableLogin">Sign in</button>
 						<hr class="my-4">

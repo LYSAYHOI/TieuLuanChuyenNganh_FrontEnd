@@ -3,7 +3,7 @@
 		<img [routerLink]="['/product-detail/1/1']" class="card-img-top product-image" [src]="'assets/'+ i.image" [alt]="i.productName">
 		<div class="card-body">
 			<a class="card-title">{{i.productName}}</a>
-			<p class="card-text">{{i.price | currency : "VND"}}</p>
+			<p class="card-text">{{i.price}}</p>
 			<a (click)="addToCart(i.idProduct)" class="btn btn-primary">add to cart</a>
 		</div>
 	</div>
@@ -22,8 +22,8 @@
 						<div class="card-body mb">
 							<h5 class="card-title">{{i.productName}}</h5>
 							<p class="card-text">{{i.price | currency : "VND"}}</p>
-							<button type="button" class="btn btn-primary mb" 
-								(click)="addToCart(i.idProduct)">Add to card</button>
+							<button type="button" class="btn btn-primary mb"
+								(click)="addToCart(i.idProduct)" >Add to card</button>
 						</div>
 					</div>
 				</div>
@@ -37,3 +37,7 @@
 		<a class="page-link"  (click)="getParams(i+1)">{{i + 1}}</a>
 	</li>
 </ul>
+<div *ngIf='productList.length == 0'>
+	<h1 style="margin-left: 30%; margin-top: 100px; margin-bottom: 10px">Product is not found</h1>
+	<i class="fa fa-exclamation-circle fa-5x" style="font-size: 300px; margin-left: 35%"></i>
+</div>
